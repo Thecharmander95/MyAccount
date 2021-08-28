@@ -20,16 +20,26 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'devise'
-gem 'friendly_id'
+# Html to Haml gem
+gem 'html2haml'
+gem 'haml-rails', '~> 2.0.1'
 
-gem "haml-rails", "~> 2.0"
+# Foundtion Gems
+gem 'foundation-rails'
+gem 'autoprefixer-rails'
 
+gem 'friendly_id', '~> 5.2.4'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+# devise gem
+gem 'devise', '~> 4'
 
-gem "hirb"
+# Use ActiveStorage variant
+gem 'mini_magick', '~> 4.8'
+gem 'image_processing'
+gem "aws-sdk-s3", require: false
+gem 'fastimage'
+
+gem 'hirb'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
