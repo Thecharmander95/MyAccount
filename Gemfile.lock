@@ -99,6 +99,7 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 5.1)
+    hirb (0.7.3)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -237,6 +238,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   haml-rails (~> 2.0)
+  hirb
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
