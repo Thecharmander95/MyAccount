@@ -1,3 +1,26 @@
-img.topbarimage{
-  border-radius: 10px;
+.active {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: lightgray;
+  padding-right: 10%;
+}
+
+.icon{
+  height: 40px;
+  width: 40px;
+}
+
+.text-padding-home-icon {
+  padding-top: 18%;
+}
+
+.unactive:hover {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: lighten(lightgray, 10%);
+  padding-right: 10%;
+}
+
+.text-padding-personal-icon {
+  padding-top: 7%;
 }
