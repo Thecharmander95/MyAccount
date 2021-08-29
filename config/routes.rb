@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
+
+  get :about, 'abouts/index'
+  get :data, 'accounts/data'
+  get :personalinfo, 'accounts/personal'
+
 end
