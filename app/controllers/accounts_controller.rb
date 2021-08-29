@@ -3,5 +3,6 @@ class AccountsController < ApplicationController
   end
 
   def personal
+    @user = current_user
   end
 end
