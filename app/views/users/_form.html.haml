@@ -9,20 +9,20 @@
     .grid-x
       .medium-4.cell
         .field
-          = f.label :email
+          = f.label :Email
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email"
         .field
-          = f.label :password
+          = f.label :Password
           - if @minimum_password_length
             %em
               = @minimum_password_length
               characters minimum
           %i (Leave blank if you don't want to change it)
           %br/
-          = f.password_field :password, autocomplete: "new-password"
+          = f.password_field :Password, autocomplete: "new-password"
           .field
-            = f.label :password_confirmation
+            = f.label :Password_Confirmation
             = f.password_field :password_confirmation, autocomplete: "new-password"
       .medium-4.cell
         .field
@@ -30,7 +30,7 @@
           %br/
           = f.text_field :username
         .field
-          = f.label :bio
+          = f.label :Bio
           %br/
           = f.text_area :body, rows: 2
       .medium-4.cell
@@ -38,15 +38,11 @@
           = f.label :avatar, "Profile Picture"
           = f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png'
           - if f.object.avatar.attached?
-            = image_tag f.object.avatar.variant(resize_to_limit: [400, 400])
-  -else
-    .field
-      = f.label :Role
-      %br/
-      = f.text_field :role
+            = image_tag f.object.avatar.variant(resize_to_limit: [250, 250])
   .actions
     = f.submit "Update", class:"button"
+= link_to "Back", root_path, class: "button"
 -if current_user == user
   %h3 Cancel my account
-  %p
-    Whant to leave LionNav. #{button_to "Remove my account", user_path, method: :delete , data: { confirm: "Are you sure? All data will be deleted." }}
+  %h5
+    Whant to leave LionNav. #{button_to "Remove my account", user_path, method: :delete , data: { confirm: "Are you sure? All data will be deleted." }, class: "button"}
