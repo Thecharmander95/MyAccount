@@ -10,3 +10,40 @@
       .medium-3.cell
       .medium-4.cell
         %h5 All your data all in one place.
+    .grid-x
+      .medium-4.cell
+        .callout.info
+          .grid-x
+            .medium-3.cell
+            .medium-9.cell
+              %h4 Lion Socail
+              %p= link_to "About Lion Socail."
+          %p If you would like to clear all data linked with Lion Socail click the button below.
+          .grid-x
+            .medium-3.cell
+            .medium-9.cell
+              = link_to "Delete Data", lionsocail_path, data: { confirm: "Are you sure? All data will be deleted that is realted to Lion Socail." }, class: "button"
+      .medium-4.cell
+        .callout.info
+          .grid-x
+            .medium-2.cell
+            .medium-9.cell
+              %h4 Movie Makers
+              %p= link_to "About Movie Makers."
+          %p If you would like to clear all data linked with Movie Makers click the button below.
+          .grid-x
+            .medium-3.cell
+            .medium-9.cell
+              = link_to "Delete Data", moviemakers_path, data: { confirm: "Are you sure? All data will be deleted that is realted to Movie Makers." }, class: "button"
+      .medium-4.cell
+        .callout.info
+          .grid-x
+            .medium-3.cell
+            .medium-9.cell
+              %h4 Rails Forums
+              %p= link_to "About Rails Forums."
+          %p If you would like to clear all data linked with Rails Forums click the button below.
+          .grid-x
+            .medium-3.cell
+            .medium-9.cell
+              = link_to "Delete Data", railsforums_path, data: { confirm: "Are you sure? All data will be deleted that is realted to Rails Forums" }, class: "button"
