@@ -1,0 +1,2 @@
+class Sitedisable < ApplicationRecord
+end

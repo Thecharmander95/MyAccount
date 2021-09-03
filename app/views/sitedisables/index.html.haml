@@ -1,0 +1,21 @@
+%h1 Listing sitedisables
+
+%table
+  %thead
+    %tr
+      %th Disable
+      %th
+      %th
+      %th
+
+  %tbody
+    - @sitedisables.each do |sitedisable|
+      %tr
+        %td= sitedisable.disable
+        %td= link_to 'Show', sitedisable
+        %td= link_to 'Edit', edit_sitedisable_path(sitedisable)
+        %td= link_to 'Destroy', sitedisable, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Sitedisable', new_sitedisable_path
