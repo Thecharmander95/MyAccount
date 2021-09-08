@@ -34,3 +34,13 @@
       .medium-2.cell
         .text-padding-home-icon
           About
+- if current_user.role == "admin"
+  = link_to admin_path do
+    .unactive
+      .grid-x
+        .medium-2.cell
+          .icon
+            = image_pack_tag("icons/icons8/admin.png")
+        .medium-2.cell
+          .text-padding-home-icon
+            Admin

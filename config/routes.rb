@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get :lionsocail, "accounts/lionsocail"
   get :moviemakers, "accounts/moviemakers"
   get :railsforums, "accounts/railsforums"
+  get :admin, 'admins/index'
 end
