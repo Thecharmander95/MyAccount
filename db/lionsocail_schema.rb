@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_03_010340) do
+ActiveRecord::Schema.define(version: 2021_05_31_164754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abouts", force: :cascade do |t|
+    t.string "title"
+    t.text "ltoppara"
+    t.text "lchange"
+    t.text "llist1"
+    t.text "llist2"
+    t.text "llist3"
+    t.text "lbuttum"
+    t.text "llinkgithub"
+    t.text "lgithubtitle"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -43,12 +55,6 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "acts", force: :cascade do |t|
-    t.text "part"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "announcements", force: :cascade do |t|
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
@@ -60,17 +66,6 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
     t.text "what"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "comics", force: :cascade do |t|
-    t.string "title"
-    t.text "decrpition"
-    t.string "by"
-    t.string "number"
-    t.string "siries"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "price", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -90,21 +85,12 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "credits", force: :cascade do |t|
-    t.text "person"
-    t.text "for"
-    t.bigint "movie_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["movie_id"], name: "index_credits_on_movie_id"
-  end
-
   create_table "disables", force: :cascade do |t|
     t.string "postdisable"
     t.string "conversationdisable"
-    t.string "articledisable"
     t.string "chatroomdisable"
-    t.string "storydisable"
+    t.text "homedisable"
+    t.text "userdisable"
   end
 
   create_table "errors", force: :cascade do |t|
@@ -114,56 +100,12 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "forms", force: :cascade do |t|
-    t.text "question"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_forms_on_slug", unique: true
-    t.index ["user_id"], name: "index_forms_on_user_id"
-  end
-
-  create_table "forums", force: :cascade do |t|
-    t.text "question"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.string "slug"
-    t.string "title"
-    t.index ["slug"], name: "index_forums_on_slug", unique: true
-    t.index ["user_id"], name: "index_forums_on_user_id"
-  end
-
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string "slug", null: false
-    t.integer "sluggable_id", null: false
-    t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
-  end
-
   create_table "helps", force: :cascade do |t|
     t.text "email"
     t.text "number"
     t.text "with"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "labouts", force: :cascade do |t|
-    t.string "title"
-    t.text "ltoppara"
-    t.text "lchange"
-    t.text "llist1"
-    t.text "llist2"
-    t.text "llist3"
-    t.text "lbuttum"
-    t.text "llinkgithub"
-    t.text "lgithubtitle"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -175,23 +117,6 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "movies", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "author"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_movies_on_user_id"
-  end
-
-  create_table "picturescenes", force: :cascade do |t|
-    t.string "name"
-    t.bigint "movie_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["movie_id"], name: "index_picturescenes_on_movie_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -229,30 +154,6 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
     t.index ["name"], name: "index_rooms_on_name", unique: true
   end
 
-  create_table "scenes", force: :cascade do |t|
-    t.string "name"
-    t.text "content"
-    t.bigint "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "actor"
-    t.index ["movie_id"], name: "index_scenes_on_movie_id"
-  end
-
-  create_table "sitedisables", force: :cascade do |t|
-    t.string "disable"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "stories", force: :cascade do |t|
-    t.text "content"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_stories_on_user_id"
-  end
-
   create_table "suggestions", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -273,6 +174,7 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
     t.string "username", null: false
     t.string "role"
     t.string "slug"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
@@ -283,15 +185,10 @@ ActiveRecord::Schema.define(version: 2021_09_03_010340) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "credits", "movies"
-  add_foreign_key "forums", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
-  add_foreign_key "movies", "users"
-  add_foreign_key "picturescenes", "movies"
   add_foreign_key "posts", "users"
   add_foreign_key "room_messages", "rooms"
   add_foreign_key "room_messages", "users"
-  add_foreign_key "scenes", "movies"
-  add_foreign_key "stories", "users"
+  add_foreign_key "suggestions", "users"
 end
