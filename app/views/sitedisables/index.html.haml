@@ -1,21 +1,21 @@
-%h1 Listing sitedisables
-
-%table
-  %thead
-    %tr
-      %th Disable
-      %th
-      %th
-      %th
-
-  %tbody
-    - @sitedisables.each do |sitedisable|
-      %tr
-        %td= sitedisable.disable
-        %td= link_to 'Show', sitedisable
-        %td= link_to 'Edit', edit_sitedisable_path(sitedisable)
-        %td= link_to 'Destroy', sitedisable, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Sitedisable', new_sitedisable_path
+.grid-x
+  .medium-3.cell
+    = render "buttons/admin"
+  .medium-9.cell
+    .grid-x
+      .medium-4.cell
+      .medium-6.cell
+        %h3 Disable LionNav
+      - @sitedisables.each do |sitedisable|
+        .callout.info
+          %h4 Disable LionNav
+          %p
+            Is disabled:
+            - if sitedisable.disable == "no"
+              no
+            - else
+              yes
+          .grid-x
+            .medium-3.cell
+            .medium-5.cell
+              = link_to 'Change', edit_sitedisable_path(sitedisable), class: "button"
