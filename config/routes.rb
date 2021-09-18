@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get :moviemakers, "accounts/moviemakers"
   get :railsforums, "accounts/railsforums"
   get :admin, 'admins/index'
+  get :disabled, 'homes/disabled'
 end

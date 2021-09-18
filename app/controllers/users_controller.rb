@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :lionnav_disable
   before_action :authenticate_user!
   before_action :check_user, only: [:edit]
 

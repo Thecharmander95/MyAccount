@@ -1,4 +1,5 @@
 class RoomMessagesController < ApplicationController
+  before_action :lionnav_disable
   before_action :authenticate_user!
   before_action :load_entities
   before_action :sitedisable_check

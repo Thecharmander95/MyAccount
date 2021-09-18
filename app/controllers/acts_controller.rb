@@ -1,4 +1,5 @@
 class ActsController < ApplicationController
+  before_action :lionnav_disable
   before_action :set_movie
   before_action :set_act, only: [:edit, :update, :destroy]
 

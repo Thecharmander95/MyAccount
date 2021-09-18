@@ -1,4 +1,5 @@
 class ScenesController < ApplicationController
+  before_action :lionnav_disable
   before_action :set_movie
   before_action :set_scene, only: [:edit, :update, :destroy]
 

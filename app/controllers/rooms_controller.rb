@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :lionnav_disable
   before_action :authenticate_user!
   before_action :chatroomdisable_check
   before_action :load_entities
