@@ -25,5 +25,4 @@ Rails.application.routes.draw do
   get :morerailsforums, 'learns/railsforums'
   get :learnmore, 'learns/index'
 
-
 end
