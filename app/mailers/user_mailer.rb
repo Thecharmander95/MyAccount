@@ -5,15 +5,16 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
-  def welcome
-    @user = current_user.username
-
-    mail to: current_user.email
+  def welcome(resource)
+    @resource = resource
+    @user = @resource.username
+    mail to: @resource.email
   end
 
-  def change
-    @user = current_user.username
+  def change(user)
+    @person = user
+    @user = @person.username
 
-    mail to: current_user.email
+    mail to: @person.email
   end
 end
