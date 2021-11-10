@@ -10,16 +10,10 @@
       .medium-4.cell
         .field
           = f.label :Email
-          %br/
           = f.email_field :email, autofocus: true, autocomplete: "email"
         .field
           = f.label :Password
-          - if @minimum_password_length
-            %em
-              = @minimum_password_length
-              characters minimum
           %i (Leave blank if you don't want to change it)
-          %br/
           = f.password_field :Password, autocomplete: "new-password"
           .field
             = f.label :Password_Confirmation
@@ -27,11 +21,9 @@
       .medium-4.cell
         .field
           = f.label :Username
-          %br/
           = f.text_field :username
         .field
           = f.label :Bio
-          %br/
           = f.text_area :body, rows: 2
       .medium-4.cell
         .field
