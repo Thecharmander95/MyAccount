@@ -25,6 +25,5 @@ Rails.application.routes.draw do
   get :morelionsocial, 'learns/lionsocial'
   get :moremoviemakers, 'learns/moviemakers'
   get :morerailsforums, 'learns/railsforums'
-  get :learnmore, 'learns/index'
 
 end

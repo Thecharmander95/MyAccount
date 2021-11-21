@@ -10,8 +10,4 @@ class LearnsController < ApplicationController
   def railsforums
     @page_title = "Learn More Rails Forums | LionNav"
   end
-
-  def index
-    @page_title = "Learn More | LionNav"
-  end
 end
