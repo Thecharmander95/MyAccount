@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-  before_action :lionnav_disable
   before_action :authenticate_user!
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 

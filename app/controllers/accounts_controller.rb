@@ -1,6 +1,5 @@
 class AccountsController < ApplicationController
   before_action :set_user
-  before_action :lionnav_disable
 
   def data
     @page_title = "Data | LionNav"

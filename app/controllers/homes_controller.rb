@@ -1,5 +1,4 @@
 class HomesController < ApplicationController
-  before_action :lionnav_disable, only:[:index]
   def index
     if user_signed_in?
     else

@@ -1,5 +1,4 @@
 class PicturescenesController < ApplicationController
-  before_action :lionnav_disable
   before_action :set_movie, excpet: [:destroy]
   before_action :set_picturescene, only: [:show, :destroy]
 

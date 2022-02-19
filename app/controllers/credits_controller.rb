@@ -1,7 +1,6 @@
 class CreditsController < ApplicationController
   before_action :set_movie
   before_action :set_credit, only: [:edit, :update, :destroy]
-  before_action :lionnav_disable
 
   def new
     @credit = @movie.credits.new

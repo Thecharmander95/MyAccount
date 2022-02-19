@@ -1,5 +1,4 @@
 class ForumsController < ApplicationController
-  before_action :lionnav_disable
   before_action :set_forum, only: %i[ show edit update destroy ]
 
   def index
