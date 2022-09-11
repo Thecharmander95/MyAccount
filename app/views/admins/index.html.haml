@@ -1,20 +1,14 @@
 .grid-x
   .medium-3.cell
     = render "buttons/admin"
+
   .medium-9.cell
-    .grid-x
-      .medium-4.cell
-      .medium-6.cell
-        %h3 Admin Page
+    .center
+      %h3 Admin Page
     .grid-x
       .medium-4.cell
         .callout.info
-          .grid-x
-            .medium-1.cell
-            .medium-10.cell
-              %h4 Site Wide Disable
-          %p This would shut down all LionNav apps.
-          .grid-x
-            .medium-4.cell
-            .medium-5.cell
-              = link_to "Open", sitedisables_path, class: "button"
+          .center
+            %h4 User Accounts
+            %p This is the page with all user accounts on LionNav.
+            = link_to "Open", adminusers_path, class: "button"

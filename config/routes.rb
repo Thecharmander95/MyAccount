@@ -6,15 +6,13 @@ Rails.application.routes.draw do
 
   # Resources
   resources :users
-  resources :sitedisables
 
   # Get paths
   get :data, 'accounts/data'
   get :personalinfo, 'accounts/personal'
-  get :admin, 'admins/index'
   get :disabled, 'homes/disabled'
 
-  # About gets
+  # About paths
   get :about, 'abouts/index'
   get :credit, 'abouts/credit'
   get :lionsocial, 'abouts/lionsocial'
@@ -22,10 +20,14 @@ Rails.application.routes.draw do
   get :railsforums, 'abouts/railsforums'
   get :lionfinance, 'abouts/lionfinance'
 
-  # Learn More gets
+  # Learn More paths
   get :morelionsocial, 'learns/lionsocial'
   get :moremoviemakers, 'learns/moviemakers'
   get :morerailsforums, 'learns/railsforums'
   get :morelionfinance, 'learns/lionfinance'
+
+  # Admin paths
+  get :admin, 'admins/index'
+  get :adminusers, 'admins/users'
 
 end

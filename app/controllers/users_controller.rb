@@ -41,21 +41,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def following
-    @title = "Following"
-    @user = User.friendly.find(params[:id])
-    @users = @user.following
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @user = User.friendly.find(params[:id])
-    @users = @user.followers
-    render 'show_follow'
-  end
-
-
   private
 
     def set_user
