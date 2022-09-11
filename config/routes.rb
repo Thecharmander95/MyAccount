@@ -20,10 +20,12 @@ Rails.application.routes.draw do
   get :lionsocial, 'abouts/lionsocial'
   get :moviemakers, 'abouts/moviemakers'
   get :railsforums, 'abouts/railsforums'
+  get :lionfinance, 'abouts/lionfinance'
 
   # Learn More gets
   get :morelionsocial, 'learns/lionsocial'
   get :moremoviemakers, 'learns/moviemakers'
   get :morerailsforums, 'learns/railsforums'
+  get :morelionfinance, 'learns/lionfinance'
 
 end

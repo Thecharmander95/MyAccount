@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_021850) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_04_021850) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,16 +54,16 @@ ActiveRecord::Schema.define(version: 2022_02_04_021850) do
 
   create_table "acts", force: :cascade do |t|
     t.text "part"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "credits", force: :cascade do |t|
     t.text "person"
     t.text "for"
     t.bigint "movie_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_credits_on_movie_id"
   end
 
@@ -80,8 +79,8 @@ ActiveRecord::Schema.define(version: 2022_02_04_021850) do
   create_table "picturescenes", force: :cascade do |t|
     t.string "name"
     t.bigint "movie_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_picturescenes_on_movie_id"
   end
 
