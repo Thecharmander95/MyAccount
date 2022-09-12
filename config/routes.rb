@@ -26,8 +26,4 @@ Rails.application.routes.draw do
   get :morerailsforums, 'learns/railsforums'
   get :morelionfinance, 'learns/lionfinance'
 
-  # Admin paths
-  get :admin, 'admins/index'
-  get :adminusers, 'admins/users'
-
 end
