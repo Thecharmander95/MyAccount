@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :check_user, only: [:edit]
 
   def index
-    @page_title = "All users Lion social"
+    @page_title = "All users Lion Nav"
     @users = User.all
     @users = User.by_newest
   end
@@ -18,12 +18,12 @@ class UsersController < ApplicationController
     @user = User.friendly.find(params[:id])
     @posts = @user.posts
     @posts = Post.by_newest
-    @page_title = "#{@user.username}'s profile Lion social"
+    @page_title = "#{@user.username}'s profile Lion Nav"
   end
 
   def edit
     @user = User.friendly.find(params[:id])
-    @page_title = "Edit #{@user.username}'s Lion social"
+    @page_title = "Edit #{@user.username}'s Lion Nav"
   end
 
   def update

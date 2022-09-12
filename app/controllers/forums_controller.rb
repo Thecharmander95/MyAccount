@@ -10,7 +10,11 @@ class ForumsController < ApplicationController
   end
 
   def new
-    @forum = current_user.forums.new
+    if user_signed_in?
+      @forum = current_user.forums.new
+    else
+      redirect_to new_user_session_path, notice: "Can't ask a question unlessed signed in"
+    end
   end
 
   def create

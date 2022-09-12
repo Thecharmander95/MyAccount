@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @page_title = "Conversations Lion social"
     @users = User.where.not(id: current_user.id)
@@ -19,12 +19,11 @@ class ConversationsController < ApplicationController
 
   def destroy
     @conversation = Conversation.find(params[:id])
+    @conversation.update_attribute(:sender_id , "")
+    @conversation.update_attribute(:receiver_id , "")
+    @conversation.messages.destroy_all
     @conversation.delete
-    if current_user.role == "admin"
-      redirect_to admin_conversation_path
-    else
-      redirect_to conversations_path
-    end
+    redirect_to root_path, notice: 'Conversation was successfully deleted.'
   end
 
   private
