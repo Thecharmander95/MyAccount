@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  establish_connection(:users)
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,11 +12,11 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
-  has_many :messages, dependent: :delete_all
+  has_many :messages, dependent: :destroy
   has_many :movies, dependent: :destroy
   has_many :forums, dependent: :destroy
+  has_many :payments, dependent: :destroy
 
-  has_one_attached :avatar, dependent: :destroy
 
   validates :username, uniqueness: true, length: { minimum:1}
 
@@ -53,4 +52,5 @@ class User < ApplicationRecord
   def online?
     updated_at > 5.minutes.ago
   end
+
 end
