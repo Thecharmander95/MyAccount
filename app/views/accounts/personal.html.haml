@@ -2,14 +2,9 @@
   .medium-3.cell
     = render "buttons/personal"
   .medium-9.cell
-    .grid-x
-      .medium-4.cell
-      .medium-6.cell
-        %h3 Personal Info
-    .grid-x
-      .medium-1.cell
-      .medium-9.cell
-        %h5 Basic info, like your name and photo, that you use on LionNav services.
+    .center
+      %h3 Personal Info
+      %h5 Basic info, like your name and photo, that you use on LionNav services.
     .callout.info
       %h5 Basic Info
       %p Some info like your name and picture will be shown.
@@ -22,7 +17,6 @@
         .medium-1.cell
         .medium-2.cell
           %p= link_to "Change", edit_user_path(current_user)
-      .grid-x
         .medium-1.cell
           %p Name
         .medium-3.cell
@@ -31,7 +25,6 @@
         .medium-1.cell
         .medium-2.cell
           %p= link_to "Change", edit_user_path(current_user)
-      .grid-x
         .medium-1.cell
           %p Password
         .medium-3.cell
