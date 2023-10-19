@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_18_122558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abouts", force: :cascade do |t|
+    t.string "title"
+    t.text "toppara"
+    t.text "change"
+    t.text "list1"
+    t.text "list2"
+    t.text "list3"
+    t.text "buttom"
+    t.text "linkgithub"
+    t.text "githubtitle"
+    t.string "site"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "site"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -79,6 +95,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
     t.string "conversationdisable"
     t.string "homedisable"
     t.string "userdisable"
+    t.string "movie"
+    t.string "scene"
+    t.string "credit"
+    t.string "error"
+    t.string "expense"
+    t.string "forums"
+    t.string "lsabout"
+    t.string "payment"
+    t.string "picturescene"
+    t.string "lionsocial"
+    t.string "lionfianace"
+    t.string "moviemaker"
+    t.string "tutorial"
+    t.string "myaccont"
+    t.string "chatrooms"
   end
 
   create_table "errors", force: :cascade do |t|
@@ -87,18 +118,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "expenses", force: :cascade do |t|
-    t.string "title"
-    t.decimal "amount"
-    t.date "time"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "payments_id"
-    t.index ["payments_id"], name: "index_expenses_on_payments_id"
-    t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
   create_table "forums", force: :cascade do |t|
@@ -123,18 +142,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "lsabouts", force: :cascade do |t|
-    t.string "title"
-    t.text "toppara"
-    t.text "change"
-    t.text "list1"
-    t.text "list2"
-    t.text "list3"
-    t.text "buttom"
-    t.text "linkgithub"
-    t.text "githubtitle"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id"
@@ -153,18 +160,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
     t.string "author"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_movies_on_user_id"
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.string "option"
-    t.string "info"
-    t.decimal "amount"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "expenses_id"
-    t.index ["expenses_id"], name: "index_payments_on_expenses_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "picturescenes", force: :cascade do |t|
@@ -191,6 +186,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "room_messages", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.bigint "user_id", null: false
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_messages_on_room_id"
+    t.index ["user_id"], name: "index_room_messages_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_rooms_on_name", unique: true
   end
 
   create_table "scenes", force: :cascade do |t|
@@ -226,15 +239,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_004216) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "credits", "movies"
-  add_foreign_key "expenses", "payments", column: "payments_id"
-  add_foreign_key "expenses", "users"
   add_foreign_key "forums", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "movies", "users"
-  add_foreign_key "payments", "expenses", column: "expenses_id"
-  add_foreign_key "payments", "users"
   add_foreign_key "picturescenes", "movies"
   add_foreign_key "posts", "users"
+  add_foreign_key "room_messages", "rooms"
+  add_foreign_key "room_messages", "users"
   add_foreign_key "scenes", "movies"
 end
