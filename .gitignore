@@ -30,3 +30,9 @@
 
 .env
 .ruby-version
+
+/node_modules
+yarn-error.log
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
