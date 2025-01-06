@@ -9,11 +9,38 @@ set :keep_releases, 5
 set :branch, "main"
 set :application, "MyAccount"
 set :repo_url, "https://github.com/Thecharmander95/MyAccount.git"
-set :branch, "main"
 set :deploy_to, "/home/leo/Production/#{fetch :application}"
 append :linked_files, "config/master.key"
 
 set :rbenv_type, :user
+
+namespace :deploy do
+  before :updated, 'yarn:install'
+  before :updated, 'yarn:build'
+end
+
+namespace :yarn do
+  desc 'Install yarn dependencies'
+  task :install do
+    on roles(:app) do
+      within release_path do
+        execute :yarn, :install
+      end
+    end
+  end
+
+  desc 'yarn dependencies'
+  task :build do
+    on roles(:app) do
+      within release_path do
+        with node_env: :production do
+          execute("cd #{release_path} && yarn build")
+          execute("cd #{release_path} && yarn build:css")
+        end
+      end
+    end
+  end
+end
 
 # Optionally, you can symlink your database.yml and/or secrets.yml file from the shared directory during deploy
 # This is useful if you don't want to use ENV variables

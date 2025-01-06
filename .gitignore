@@ -33,3 +33,8 @@
 
 /node_modules
 yarn-error.log
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/app/assets/builds/*
+!/app/assets/builds/.keep
